@@ -1,0 +1,43 @@
+# 追跡する鉱物。keywords_ja はヤフオク/国内ショップ、keywords_en は eBay 用。
+# species はデータ上の正規化キー。
+stones:
+  - species: quartz
+    name_ja: 水晶
+    keywords_ja: ["水晶 原石", "水晶 クラスター"]
+    keywords_en: ["quartz crystal specimen"]
+  - species: amethyst
+    name_ja: アメジスト
+    keywords_ja: ["アメジスト 原石", "アメジスト クラスター"]
+    keywords_en: ["amethyst specimen"]
+  - species: fluorite
+    name_ja: フローライト
+    keywords_ja: ["フローライト 原石", "蛍石"]
+    keywords_en: ["fluorite specimen"]
+  - species: tourmaline
+    name_ja: トルマリン
+    keywords_ja: ["トルマリン 原石", "トルマリン ルース"]
+    keywords_en: ["tourmaline crystal", "tourmaline loose"]
+  - species: garnet
+    name_ja: ガーネット
+    keywords_ja: ["ガーネット 原石", "ガーネット ルース"]
+    keywords_en: ["garnet crystal specimen", "garnet loose"]
+  - species: opal
+    name_ja: オパール
+    keywords_ja: ["オパール 原石", "オパール ルース"]
+    keywords_en: ["opal rough", "opal loose"]
+  - species: aquamarine
+    name_ja: アクアマリン
+    keywords_ja: ["アクアマリン 原石", "アクアマリン ルース"]
+    keywords_en: ["aquamarine crystal", "aquamarine loose"]
+  - species: topaz
+    name_ja: トパーズ
+    keywords_ja: ["トパーズ 原石", "トパーズ ルース"]
+    keywords_en: ["topaz crystal", "topaz loose"]
+  - species: rhodochrosite
+    name_ja: ロードクロサイト
+    keywords_ja: ["ロードクロサイト", "インカローズ 原石"]
+    keywords_en: ["rhodochrosite specimen"]
+  - species: bismuth
+    name_ja: ビスマス
+    keywords_ja: ["ビスマス 結晶"]
+    keywords_en: ["bismuth crystal"]

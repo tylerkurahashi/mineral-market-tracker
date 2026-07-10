@@ -1,0 +1,28 @@
+sources:
+  ebay:
+    enabled: true
+    marketplace: EBAY_US
+    limit_per_keyword: 50        # 1キーワードあたり取得件数
+    category_ids: "3213"          # Rocks, Fossils & Minerals
+  yahoo_auctions:
+    enabled: true
+    limit_per_keyword: 50
+    request_interval_sec: 3.0    # 負荷をかけない
+  shops:
+    enabled: false               # サイト別スクレイパー追加後に有効化
+    sites: []
+
+analysis:
+  window_days: 30                # 基準相場の集計期間
+  bargain_threshold: 0.6         # 中央値単価の60%未満で割安候補
+  min_quality_score: 5.0         # 品質評価がある場合の足切り
+  min_samples: 8                 # 基準相場に必要な最低サンプル数
+
+quality:
+  enabled: false                 # --quality フラグ or true で有効化
+  model: claude-haiku-4-5-20251001
+  max_listings_per_day: 40       # コスト上限
+  only_bargain_candidates: true  # 割安候補のみ評価してコスト削減
+
+exchange:
+  fallback_usd_jpy: 155.0        # レート取得失敗時のフォールバック
