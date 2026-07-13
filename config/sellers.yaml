@@ -1,0 +1,36 @@
+# 調査対象セラー。石種(stones.yaml)と同様にリスト管理する。
+# platform:
+#   yahoo_seller     … ヤフオク即決限定の出品者(固定価格の出品相場)
+#   yahoo_flea_sold  … Yahoo!フリマのSOLD実績(実績相場。最優先の相場根拠)
+# 追加前に scripts/vet_sellers.py で SOLD件数・産地表記率を確認する
+# (既定基準: SOLD>=30/100 かつ 産地表記>=50%)。
+sellers:
+  - id: 2FHxMyLwJxQaEFmRUEYvZHBLVxreb
+    name: エヌズミネラル
+    platform: yahoo_seller
+    note: 即決限定・美品標本
+
+  - id: p73043487
+    name: フリマ標本商A
+    platform: yahoo_flea_sold
+    note: SOLD61/100 産地63% 構造化タイトル(種+英名+産地)
+
+  - id: p28349730
+    name: フリマ標本商C
+    platform: yahoo_flea_sold
+    note: SOLD56/100 産地100%(探索で発見・優良)
+
+  - id: p41280242
+    name: フリマ標本商D
+    platform: yahoo_flea_sold
+    note: SOLD32/100 産地65%(探索で発見)
+
+  - id: p3345485
+    name: フリマ標本商E
+    platform: yahoo_flea_sold
+    note: SOLD31/44 産地66%(探索2回目で発見)
+
+  - id: p30052112
+    name: フリマ標本商F
+    platform: yahoo_flea_sold
+    note: SOLD18/25 産地100%(小規模だが高品質・ユーザー判断で採用)

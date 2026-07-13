@@ -14,9 +14,11 @@ import requests
 from bs4 import BeautifulSoup
 
 from ..models import Listing
+from ..normalize import parse_time_left_hours
 from .base import BaseCollector
 
 SEARCH_URL = "https://auctions.yahoo.co.jp/search/search?p={kw}&n={n}"
+CATEGORY_URL = "https://auctions.yahoo.co.jp/search/search?auccat={cat}&n={n}&b={b}"
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
 
 
@@ -31,7 +33,30 @@ class YahooAuctionsCollector(BaseCollector):
         time.sleep(self.cfg.get("request_interval_sec", 3.0))
         return self._parse(r.text, species)
 
-    def _parse(self, html: str, species: str) -> list[Listing]:
+    def browse(self) -> list[Listing]:
+        """鉱物カテゴリ(config.category)を丸ごとページング取得。種はタイトルから分類。"""
+        cats = self.cfg["category"]
+        cats = cats if isinstance(cats, list) else [cats]
+        n = min(self.cfg.get("limit_per_keyword", 50), 100)
+        max_items = self.cfg.get("max_items", 300)
+        interval = self.cfg.get("request_interval_sec", 3.0)
+        out: list[Listing] = []
+        for cat in cats:
+            got, b = 0, 1
+            while got < max_items:
+                url = CATEGORY_URL.format(cat=cat, n=n, b=b)
+                r = requests.get(url, headers={"User-Agent": UA}, timeout=30)
+                r.raise_for_status()
+                time.sleep(interval)
+                items = self._parse(r.text, "other")
+                if not items:
+                    break
+                out.extend(items)
+                got += len(items)
+                b += n
+        return out
+
+    def _parse(self, html: str, species: str = "other") -> list[Listing]:
         soup = BeautifulSoup(html, "lxml")
         today = date.today().isoformat()
         out: list[Listing] = []
@@ -50,6 +75,14 @@ class YahooAuctionsCollector(BaseCollector):
             auction_id = url.rstrip("/").split("/")[-1].split("?")[0]
             img = li.select_one("img")
             images = [img["src"]] if img and img.get("src", "").startswith("http") else []
+            # 入札数・残り時間 (ヤフオクは全件オークション形式)
+            bid_el = li.select_one(".Product__bid")
+            bids = None
+            if bid_el:
+                bt = bid_el.get_text(strip=True)
+                bids = int(bt) if bt.isdigit() else None
+            time_el = li.select_one(".Product__time")
+            ends_in = parse_time_left_hours(time_el.get_text(strip=True)) if time_el else None
             listing = Listing(
                 listing_id=f"yahoo:{auction_id}",
                 source=self.source_name,
@@ -62,6 +95,8 @@ class YahooAuctionsCollector(BaseCollector):
                 snapshot_date=today,
                 collected_at=self.now_iso(),
                 listing_type="auction",
+                bids=bids,
+                ends_in_hours=ends_in,
                 image_urls=images,
             )
             out.append(self.enrich_size(listing))

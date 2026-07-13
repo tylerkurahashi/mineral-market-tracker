@@ -7,6 +7,7 @@ stones:
     keywords_en: ["quartz crystal specimen"]
   - species: amethyst
     name_ja: アメジスト
+    aliases: ["紫水晶"]
     keywords_ja: ["アメジスト 原石", "アメジスト クラスター"]
     keywords_en: ["amethyst specimen"]
   - species: fluorite
@@ -15,8 +16,8 @@ stones:
     keywords_en: ["fluorite specimen"]
   - species: tourmaline
     name_ja: トルマリン
-    keywords_ja: ["トルマリン 原石", "トルマリン ルース"]
-    keywords_en: ["tourmaline crystal", "tourmaline loose"]
+    keywords_ja: ["トルマリン 原石", "トルマリン ルース", "リチア電気石"]
+    keywords_en: ["tourmaline crystal", "tourmaline loose", "elbaite"]
   - species: garnet
     name_ja: ガーネット
     keywords_ja: ["ガーネット 原石", "ガーネット ルース"]
@@ -41,3 +42,149 @@ stones:
     name_ja: ビスマス
     keywords_ja: ["ビスマス 結晶"]
     keywords_en: ["bismuth crystal"]
+  - species: labradorite
+    name_ja: ラブラドライト
+    keywords_ja: ["ラブラドライト 原石", "ラブラドライト ルース", "スペクトロライト"]
+    keywords_en: ["labradorite specimen", "labradorite loose", "spectrolite"]
+  - species: phosphophyllite
+    name_ja: フォスフォフィライト
+    keywords_ja: ["フォスフォフィライト", "フォスフォフィライト 原石"]
+    keywords_en: ["phosphophyllite specimen", "phosphophyllite crystal"]
+    # アニメ「宝石の国」グッズが大量に混入するため除外
+    exclude: ["宝石の国", "ヴァーミリオン", "フィギュア", "グッズ", "アクリル", "缶バッジ",
+              "ぬいぐるみ", "コスプレ", "ウィッグ", "ラバスト", "同人", "カード", "ステッカー"]
+  - species: lazulite
+    name_ja: ラズライト
+    keywords_ja: ["ラズライト", "ラズライト 原石"]
+    keywords_en: ["lazulite crystal", "lazulite specimen"]
+  - species: moonstone
+    name_ja: ムーンストーン
+    keywords_ja: ["ムーンストーン 原石", "ムーンストーン ルース"]
+    keywords_en: ["moonstone loose", "rainbow moonstone"]
+  - species: sunstone
+    name_ja: サンストーン
+    keywords_ja: ["サンストーン 原石", "サンストーン ルース"]
+    keywords_en: ["sunstone loose", "sunstone crystal"]
+  - species: spinel
+    name_ja: スピネル
+    keywords_ja: ["スピネル 原石", "スピネル ルース"]
+    keywords_en: ["spinel crystal", "spinel loose"]
+  - species: peridot
+    name_ja: ペリドット
+    keywords_ja: ["ペリドット 原石", "ペリドット ルース"]
+    keywords_en: ["peridot crystal", "peridot loose"]
+  - species: morganite
+    name_ja: モルガナイト
+    keywords_ja: ["モルガナイト 原石", "モルガナイト ルース"]
+    keywords_en: ["morganite specimen", "morganite loose"]
+  - species: tanzanite
+    name_ja: タンザナイト
+    keywords_ja: ["タンザナイト 原石", "タンザナイト ルース"]
+    keywords_en: ["tanzanite crystal", "tanzanite loose"]
+  - species: kunzite
+    name_ja: クンツァイト
+    keywords_ja: ["クンツァイト 原石", "クンツァイト ルース"]
+    keywords_en: ["kunzite crystal", "kunzite loose"]
+  - species: apophyllite
+    name_ja: アポフィライト
+    keywords_ja: ["アポフィライト 原石", "魚眼石"]
+    keywords_en: ["apophyllite specimen", "apophyllite crystal"]
+  - species: agate
+    name_ja: アゲート
+    aliases: ["瑪瑙", "メノウ"]
+    keywords_ja: ["瑪瑙 原石", "アゲート 原石"]
+    keywords_en: ["agate specimen", "agate geode"]
+  - species: malachite
+    name_ja: マラカイト
+    keywords_ja: ["マラカイト 原石", "孔雀石"]
+    keywords_en: ["malachite specimen"]
+  - species: euclase
+    name_ja: ユークレース
+    keywords_ja: ["ユークレース 原石", "ユークレース"]
+    keywords_en: ["euclase crystal", "euclase specimen"]
+  - species: grandidierite
+    name_ja: グランディディエライト
+    keywords_ja: ["グランディディエライト", "グランディディエライト ルース"]
+    keywords_en: ["grandidierite specimen", "grandidierite loose"]
+  - species: spessartine
+    name_ja: スペサルタイト
+    aliases: ["スペサルチン", "スペッサルタイト", "スペサルティン"]
+    keywords_ja: ["スペサルタイト", "スペサルティン ガーネット"]
+    keywords_en: ["spessartine garnet", "spessartite loose"]
+  - species: dioptase
+    name_ja: ダイオプテース
+    keywords_ja: ["翠銅鉱", "ダイオプテーズ 原石"]
+    keywords_en: ["dioptase specimen", "dioptase crystal"]
+  - species: sphene
+    name_ja: スフェーン
+    keywords_ja: ["スフェーン ルース", "チタン石 原石"]
+    keywords_en: ["sphene loose", "titanite crystal"]
+  - species: kyanite
+    name_ja: カイヤナイト
+    keywords_ja: ["カイヤナイト 原石", "藍晶石"]
+    keywords_en: ["kyanite specimen", "kyanite blade"]
+  - species: villiaumite
+    name_ja: ビリオム石
+    aliases: ["ビリオーム石", "ヴィリオーマイト"]
+    keywords_ja: ["ビリオム石", "ビリオーム石"]
+    keywords_en: ["villiaumite"]
+  - species: pyrite
+    name_ja: パイライト
+    aliases: ["黄鉄鉱"]
+    keywords_ja: ["パイライト 原石", "黄鉄鉱"]
+    keywords_en: ["pyrite specimen", "pyrite cube"]
+  # --- 発見機能(未分類頻出語)から追加 ---
+  - species: celestite
+    name_ja: セレスタイト
+    aliases: ["天青石", "セレスティン"]
+    keywords_ja: ["セレスタイト 原石", "天青石"]
+    keywords_en: ["celestite specimen", "celestine"]
+  - species: calcite
+    name_ja: カルサイト
+    aliases: ["方解石"]
+    keywords_ja: ["カルサイト 原石", "方解石"]
+    keywords_en: ["calcite specimen"]
+  - species: zincite
+    name_ja: ジンカイト
+    aliases: ["紅亜鉛鉱"]
+    keywords_ja: ["ジンカイト", "紅亜鉛鉱"]
+    keywords_en: ["zincite crystal"]
+  - species: yooperlite
+    name_ja: ユーパーライト
+    keywords_ja: ["ユーパーライト"]
+    keywords_en: ["yooperlite"]
+  - species: pyromorphite
+    name_ja: パイロモルファイト
+    aliases: ["緑鉛鉱"]
+    keywords_ja: ["パイロモルファイト", "緑鉛鉱"]
+    keywords_en: ["pyromorphite specimen"]
+  - species: aragonite
+    name_ja: アラゴナイト
+    aliases: ["霰石"]
+    keywords_ja: ["アラゴナイト 原石", "霰石"]
+    keywords_en: ["aragonite specimen"]
+  - species: sapphire
+    name_ja: サファイア
+    aliases: ["青玉"]
+    keywords_ja: ["サファイア 原石", "サファイア ルース"]
+    keywords_en: ["sapphire crystal", "sapphire rough"]
+  - species: lapis_lazuli
+    name_ja: ラピスラズリ
+    aliases: ["瑠璃", "青金石"]
+    keywords_ja: ["ラピスラズリ 原石", "ラピスラズリ"]
+    keywords_en: ["lapis lazuli"]
+  - species: jade
+    name_ja: ヒスイ
+    aliases: ["翡翠", "ジェダイト", "ジェード"]
+    keywords_ja: ["翡翠 原石", "ヒスイ 原石"]
+    keywords_en: ["jadeite", "jade rough"]
+  - species: carnelian
+    name_ja: カーネリアン
+    aliases: ["紅玉髄"]
+    keywords_ja: ["カーネリアン", "紅玉髄"]
+    keywords_en: ["carnelian"]
+  - species: tigereye
+    name_ja: タイガーアイ
+    aliases: ["虎目石", "タイガーズアイ"]
+    keywords_ja: ["タイガーアイ", "虎目石"]
+    keywords_en: ["tiger eye", "tigers eye"]

@@ -24,8 +24,9 @@ SCOPE = "https://api.ebay.com/oauth/api_scope"
 class EbayCollector(BaseCollector):
     source_name = "ebay"
 
-    def __init__(self, source_cfg: dict, exchange_cfg: dict):
-        super().__init__(source_cfg, exchange_cfg)
+    def __init__(self, source_cfg: dict, exchange_cfg: dict,
+                 species_matcher: list[tuple[str, str]] | None = None):
+        super().__init__(source_cfg, exchange_cfg, species_matcher)
         self._token: str | None = None
 
     def keywords_for(self, stone: dict) -> list[str]:

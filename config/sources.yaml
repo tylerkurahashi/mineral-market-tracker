@@ -8,6 +8,31 @@ sources:
     enabled: true
     limit_per_keyword: 50
     request_interval_sec: 3.0    # 負荷をかけない
+    # カテゴリ収集: 鉱物カテゴリを丸ごと巡回し、種はタイトルから自動分類。
+    # (categoryを消すと従来のキーワード検索に戻る)
+    category: 20776              # 原石
+    max_items: 300               # 1カテゴリあたり取得上限
+    exclude: ["宝石の国", "フィギュア", "ネックレス", "ブレスレット", "ピアス"]
+  yahoo_flea:                    # Yahoo!フリマ(固定価格) → 相場の土台になる
+    enabled: true
+    # 叩きすぎると一時的なボット制限(ソフトBAN)で429になる。冷ませば復活するので
+    # 間隔を広めに取り、リクエスト数を絞る(短時間の連打を避ける)。
+    limit_per_keyword: 50
+    request_interval_sec: 6.0
+    include_sold: false          # trueで売り切れ(実績価格)も収集
+    # 広域キーワードで収集し、種はタイトルから自動分類。数は控えめに。
+    browse_keywords: ["鉱物 原石", "天然石 原石"]
+    exclude: ["ネックレス", "ブレスレット", "ピアス", "指輪", "リング"]
+  yahoo_seller:                  # 即決限定セラー(固定価格)。対象IDは config/sellers.yaml
+    enabled: true
+    limit_per_keyword: 50
+    request_interval_sec: 3.0
+    max_items: 200
+    fetch_detail: true           # 商品詳細ページの説明文からサイズ/重量を補完
+    detail_max: 200              # 詳細取得の上限(リクエスト数の歯止め)
+  yahoo_flea_sold:               # フリマSOLD(売却済) → 実績相場。対象IDは config/sellers.yaml
+    enabled: true
+    request_interval_sec: 6.0    # フリマは連打に弱いので広め
   shops:
     enabled: false               # サイト別スクレイパー追加後に有効化
     sites: []
@@ -17,6 +42,22 @@ analysis:
   bargain_threshold: 0.6         # 中央値単価の60%未満で割安候補
   min_quality_score: 5.0         # 品質評価がある場合の足切り
   min_samples: 8                 # 基準相場に必要な最低サンプル数
+  # 相場計算で同一出品の複数日スナップショットを1件に排除するか。
+  # true=希望価格の売れ残りバイアスを抑える(既定)。将来 実績価格を集めるなら false も可。
+  baseline_dedup: true
+  # 相場を出す窓(日数)。SOLDは売却日、出品は収集日基準。レポートに窓別で表示。
+  baseline_windows: [7, 30, 90]
+  bargain_window: 90             # 割安判定に使う相場窓(データが多い最長を既定)
+  sold_min_samples: 4            # 実績相場テーブルの最低サンプル(参考表示ゆえ低め)
+  # オークションは相場計算から除外(入札途中は価格未確定)。買い候補には
+  # 終了までこの時間を切ったものだけを入れる。固定価格(フリマ/即決)は常に対象。
+  auction_max_hours_left: 24.0
+  # ルース/原石で相場を層別し、形態ごとに評価指標を優先順で選ぶ。
+  # 指標: vol=円/mm³(体積) / mm=円/mm(最長辺) / g=円/g(重さ・カラット)。
+  # 先頭から、その出品と基準相場の両方が揃う指標を採用する。
+  metric_by_form:
+    loose: [vol, mm, g]          # カット石は体積・大きさ優先(重さ換算は誤差が大きい)
+    rough: [g, mm]               # 原石は重さ優先
 
 quality:
   enabled: false                 # --quality フラグ or true で有効化
